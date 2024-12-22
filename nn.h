@@ -1,6 +1,6 @@
 
-#ifndef NN_H
-#define NN_H
+#ifndef NN_HEADER
+#define NN_HEADER
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -409,6 +409,6 @@ int visualize_predictions() {
 
 #endif // NN_IMPLEMENTATION
 
-#endif // NN_H
+#endif // NN_HEADER
 
 
