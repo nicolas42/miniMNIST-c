@@ -4,16 +4,23 @@
 #define NN_IMPLEMENTATION
 #include "nn.h"
 
+
+
 int visualize_predictions();
-int train_network();
+int train_network(int,int);
+
+
 
 int main() {
-  // train_network();
+  int load = 0, save = 1;
+  //train_network(load, save);
   visualize_predictions();
   return 0;
 }
 
-int train_network() {
+
+
+int train_network(int do_load, int do_save) {
   // optionally load and save
   
     Network net;
@@ -35,8 +42,9 @@ int train_network() {
     int train_size = (int)(data.nImages * TRAIN_SPLIT);
     int test_size = data.nImages - train_size;
 
-    // Optionally load the neural network
-    // load_network(&net, "network.dat");
+    if (do_load) {
+      load_network(&net, "network.dat");
+    }
 
     for (int epoch = 0; epoch < EPOCHS; epoch++) {
         start = clock();
@@ -62,9 +70,10 @@ int train_network() {
                epoch + 1, (float)correct / test_size * 100, total_loss / train_size, cpu_time_used);
     }
 
-    // Optionally save the neural network
-    // save_network(&net, "network.dat");
-
+    if (do_save) {
+      save_network(&net, "network.dat");
+    }
+    
     free(net.hidden.weights);
     free(net.hidden.biases);
     free(net.hidden.weight_momentum);
