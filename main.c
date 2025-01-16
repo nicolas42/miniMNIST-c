@@ -13,7 +13,7 @@ int train_network(int,int);
 
 int main() {
   int load = 0, save = 1;
-  //train_network(load, save);
+  train_network(load, save);
   visualize_predictions();
   return 0;
 }
